@@ -42,6 +42,9 @@ from inputs_01 import *
 # see site for real input
 list_of_locations = provided_values
 
+
+# this is very labor intensive
+# instead of splitting string, can parse through string directly
 def convert_input(input):
     # convert wall of numbers to usable format
     # split string after 3 spaces into separate list
@@ -63,29 +66,40 @@ def convert_input(input):
 
     return list1, list2
 
+
 def find_length_between(input):
     # convert input into usable format
-    new_lists = convert_input(input)
-
-    list1 = new_lists[0]
-    list2 = new_lists[1]
+    list1, list2 = convert_input(input)
 
     # find the minimum values in each list
     # compare those values to find the distance between the numbers
     # remove those items from respective lists and repeat
     total_distance = 0
 
-    while len(list1) >= 1:
-        smallest_a = min(list1)
-        smallest_b = min(list2)
+    # sort lists min to max
+    # O(NLog(N))
+    list1.sort()
+    # O(NLog(N))
+    list2.sort()
 
-        total_distance += abs(smallest_a - smallest_b)
-        
-        list1.remove(smallest_a)
-        list2.remove(smallest_b)
-
-
+    # O(N)
+    # working within the constraint that both lines are the same length
+    for i in range(len(list1)):
+        # O(1)
+        total_distance += abs(list1[i] - list2[i])
 
     return total_distance
 
+# Overall complexity O(NLog(N))
+
 print(find_length_between(list_of_locations))
+
+
+# recommendations from colleague:
+
+# use zip function for loop iterations
+# for i, j zip(list1, list2):
+#     total_distance += abs(i - j)
+
+# zip function will stop iterating if 1 list is smaller than the other; at the length of the smaller
+# zip will also intake more than 2 variables! 
