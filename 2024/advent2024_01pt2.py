@@ -45,11 +45,11 @@ def convert_input(input):
     list2 = []
     for value in converted:
         num_pair = value.split("   ")
-        list1.append(num_pair[0])
-        list2.append(num_pair[1])
+        list1.append(int(num_pair[0]))
+        list2.append(int(num_pair[1]))
 
-    print(list1)
-    print(list2)
+    # print(list1)
+    # print(list2)
 
     return list1, list2
 
@@ -66,14 +66,36 @@ def how_much_similarity(given_input):
     # track number of occurrences and multiply num by that number
 
     # sort lists min to max
-    # O(NLog(N))
-    list1.sort()
-    # O(NLog(N))
-    list2.sort()
+    # # O(NLog(N))
+    # list1.sort()
+    # # O(NLog(N))
+    # list2.sort()
 
-    # multiply each value by the number of occurrences of that value in list2
+    count = {}
+    # O(N)
+    for value in list2:
+        if value in count:
+            count[value] += 1
+        else:
+            count[value] = 1
+
+    # print(count)
+
+    # loop through list one and check if value in KEYS of count variable
+    # if in keys, then mult by value
+    # if not them mult by 0
     for value in list1:
-        total_similarity += (int(value) * list2.count(value))
+        if value in count:
+            total_similarity += value * count[value]
+
+
+
+    # # multiply each value by the number of occurrences of that value in list2
+    # # O(N)
+    # for value in list1:
+    #     # O(N)
+    #     total_similarity += (int(value) * list2.count(value))
+    # Total Complexity O(N^2)
 
     return total_similarity
 
