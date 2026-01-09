@@ -94,8 +94,8 @@ def count_safe_reports(input):
     # MUST only increase/decrease by 1-3 (inclusive)
     # this means a list cannot contain duplicates!
 
-    for report_number, report in map_of_reports.items():
-        print(report_number)
+    # O(N)
+    for report in map_of_reports.values():
         print(report)
 
         # no dupes in my town
@@ -106,6 +106,7 @@ def count_safe_reports(input):
         # increasing report
         if report[0] < report[1]:
             i = 0
+            # O(N)
             while (i < len(report) - 1) and (report[i] < report[i+1]):
                 print("still safe")
                 if report[i+1] - report[i] > 3:
@@ -121,6 +122,7 @@ def count_safe_reports(input):
         # decreasing report
         if report[0] > report[1]:
             i = 0
+            # O(N)
             while (i < len(report) - 1) and (report[i] > report[i+1]):
                 print("still safe")
                 if report[i] - report[i+1] > 3:
