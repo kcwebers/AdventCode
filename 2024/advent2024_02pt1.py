@@ -77,11 +77,10 @@ def convert_str_to_dict(input_str):
 
     # split string into list of 'report' strings, then store info in dict
 
-    list_of_str, convert_list = input_str.split("\n"), {}
+    list_of_str, dict_of_reports = input_str.split("\n"), {}
     for i in range(len(list_of_str)):
-        # convert_list.append(str.split(" "))
-        convert_list[i] = [int(i) for i in list_of_str[i].split()]
-    return convert_list
+        dict_of_reports[i] = [int(i) for i in list_of_str[i].split()]
+    return dict_of_reports
 
 # print(convert_str_to_dict(inputs_day02))
 
@@ -135,6 +134,7 @@ def count_safe_reports(input):
                     count += 1
                 i += 1
 
+    # O(N^2) yikes
     return count
 
 print(count_safe_reports(inputs_day02))
