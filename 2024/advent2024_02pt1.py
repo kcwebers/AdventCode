@@ -97,7 +97,7 @@ def count_safe_reports(input):
     for report_number, report in map_of_reports.items():
         print(report_number)
         print(report)
-        
+
         # no dupes in my town
         if len(report) != len(set(report)):
             print("unsafe")
@@ -112,6 +112,7 @@ def count_safe_reports(input):
                     print("ope not safe anymore")
                     i += 1
                     break
+                # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
                     i += 1
                     count += 1
@@ -126,6 +127,7 @@ def count_safe_reports(input):
                     print("ope not safe anymore")
                     i += 1
                     break
+                # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
                     i += 1
                     count += 1
