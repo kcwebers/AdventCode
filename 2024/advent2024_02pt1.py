@@ -33,43 +33,6 @@
 
 from variables import inputs_day02
 
-# def convert_data(input_str):
-#     list_of_str, convert_list = input_str.split("\n"), []
-#     for i in range(len(list_of_str)):
-#         # convert_list.append(str.split(" "))
-#         # kinda uggo, but works
-#         convert_list.append([int(i) for i in list_of_str[i].split()])
-#     return convert_list
-
-# # print(convert_data(inputs_day02))
-
-# def calc_safety(input_data):
-#     # convert data to usable format
-#     reports = convert_data(input_data)
-
-#     safe_report_count = 0
-#     # check each report (each sub-list)
-#     # MUST either be increasing or decreasing
-#     # MUST only increase/decrease by 1-3 (inclusive)
-#     # count unsafe reports
-
-#     for report in reports:
-#         print(report)
-#         if report[0] > report[1]:
-#             for i in range(len(report)):
-#         # for i in range(len(report)-1):
-#         #     if (report[i] > report[i+1]) or (report[i] < report[i+1]):
-#         #         if (report[i] - report[i+1] <= 3) or (report[i] + report[i+1] <= 3):
-#         #             print("safe")
-#         #             safe_report_count += 1
-#         #     else:
-#         #         print("unsafe")
-#     return safe_report_count
-
-# calc_safety(inputs_day02)
-
-# disliked original approach, let's try again:
-
 def convert_str_to_dict(input_str):
     # convert a string of numbers into a dict
     # keys = report number
