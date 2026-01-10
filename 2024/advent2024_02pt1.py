@@ -100,4 +100,63 @@ def count_safe_reports(input):
     # O(N^2) yikes
     return count
 
-print(count_safe_reports(inputs_day02))
+# print(count_safe_reports(inputs_day02))
+
+
+# ------------------------------------------------------------------
+# Convert to list of lists instead of using dict
+# ------------------------------------------------------------------
+
+# access each report and check list 
+# input data is string of rows w/ list of numbers separated by spaces
+# MUST either be increasing or decreasing
+# MUST only increase/decrease by 1-3 (inclusive)
+# this means a list cannot contain duplicates!
+
+def check_for_safety(input):
+    # count safe reports 
+    count = 0
+    # convert data into usable list
+    reports = input.split("\n")
+
+    # loop through reports and convert each line 
+    for r in reports:
+        # convert values from string to int to be more usable
+        report = [int(i) for i in r.split(" ")]
+        # print(report)
+        if len(report) != len(set(report)):
+            print("unsafe")
+            continue
+        # increasing report
+        if report[0] < report[1]:
+            i = 0
+            # O(N)
+            while (i < len(report) - 1) and (report[i] < report[i+1]):
+                print("still safe")
+                if report[i+1] - report[i] > 3:
+                    print("ope not safe anymore")
+                    i += 1
+                    break
+                # no need to check the final number, just need to check final number against the second-to-last number
+                if i == len(report) - 2:
+                    i += 1
+                    count += 1
+                i += 1
+        # decreasing report
+        if report[0] > report[1]:
+            i = 0
+            # O(N)
+            while (i < len(report) - 1) and (report[i] > report[i+1]):
+                print("still safe")
+                if report[i] - report[i+1] > 3:
+                    print("ope not safe anymore")
+                    i += 1
+                    break
+                # no need to check the final number, just need to check final number against the second-to-last number
+                if i == len(report) - 2:
+                    i += 1
+                    count += 1
+                i += 1
+    return count
+
+print(check_for_safety(inputs_day02))
