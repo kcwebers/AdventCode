@@ -45,8 +45,9 @@ def check_for_safety(input):
             problem_count = 0
             # O(N)
             while i < len(report) - 1:
+                print("still safe")
                 # if you encounter an issue, remove it from the report and recheck same step
-                if report[i] > report[i+1] or report[i] == report[i+1] or report[i+1] - report[i] > 3:
+                if (report[i] > report[i+1]) or (report[i] == report[i+1]) or (report[i+1] - report[i] > 3):
                     if problem_count == 0:
                         print("found anomaly")
                         report.remove(report[i+1])
@@ -55,6 +56,7 @@ def check_for_safety(input):
                         continue
                     else:
                         print("ope not safe anymore")
+                        print("unsafe report : " + ' '.join([str(s) for s in report]))
                         break
                 # no need to check the final number, just need to check final number against the second-to-last number
                 # if made it through all checks, count as safe!
@@ -78,6 +80,7 @@ def check_for_safety(input):
                         continue
                     else:
                         print("ope not safe anymore")
+                        print("unsafe report : " + ' '.join([str(s) for s in report]))
                         # break out of loop and don't count towards safe reports
                         break
                 # no need to check the final number, just need to check final number against the second-to-last number
@@ -88,4 +91,13 @@ def check_for_safety(input):
                 i += 1
     return count
 
-print(check_for_safety(inputs_day02))
+
+sample_input = """1 2 3 3 4 5
+1 2 6 7 8
+1 2 1 3 4 5 6
+7 6 4 3 1
+7 6 6 5 3 2 1"""
+
+print(check_for_safety(sample_input))
+# print(check_for_safety(inputs_day02))
+
