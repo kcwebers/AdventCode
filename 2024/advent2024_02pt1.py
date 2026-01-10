@@ -135,11 +135,9 @@ def check_for_safety(input):
                 print("still safe")
                 if report[i+1] - report[i] > 3:
                     print("ope not safe anymore")
-                    i += 1
                     break
                 # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
-                    i += 1
                     count += 1
                 i += 1
         # decreasing report
@@ -150,11 +148,9 @@ def check_for_safety(input):
                 print("still safe")
                 if report[i] - report[i+1] > 3:
                     print("ope not safe anymore")
-                    i += 1
                     break
                 # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
-                    i += 1
                     count += 1
                 i += 1
     return count
