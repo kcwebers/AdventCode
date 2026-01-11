@@ -124,9 +124,7 @@ def check_for_safety(input):
         # convert values from string to int to be more usable
         report = [int(i) for i in r.split(" ")]
         # print(report)
-        if len(report) != len(set(report)):
-            print("unsafe")
-            continue
+
         # increasing report
         if report[0] < report[1]:
             i = 0
@@ -138,6 +136,7 @@ def check_for_safety(input):
                     break
                 # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
+
                     count += 1
                 i += 1
         # decreasing report
@@ -148,9 +147,11 @@ def check_for_safety(input):
                 print("still safe")
                 if report[i] - report[i+1] > 3:
                     print("ope not safe anymore")
+
                     break
                 # no need to check the final number, just need to check final number against the second-to-last number
                 if i == len(report) - 2:
+
                     count += 1
                 i += 1
     return count
