@@ -71,6 +71,7 @@ def check_for_anomalies(input_str):
             safe_count += 1
             # print("safe")
         else:
+            # check with Problem Dampener, which allows 1 anomaly
             failures = 0
             for i in range(len(report)):
                 # list create new list with each element as long as it is not located at the current spot in the list
