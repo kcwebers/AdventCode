@@ -66,24 +66,30 @@ def check_for_anomalies(input_str):
     for r in reports:
         # convert values from string to int to be more usable
         report = [int(i) for i in r.split(" ")]
-        print(report)
+        # print(report)
         if safety_check(report):
             safe_count += 1
-            print("safe")
+            # print("safe")
         else:
             failures = 0
-            for i in report:
-                new_report_sans_element = [j for j in report if j != i]
-                print(new_report_sans_element)
+            for i in range(len(report)):
+                new_report_sans_element = [report[x] for x in range(len(report)) if x != i]
+                # print(new_report_sans_element)
                 if safety_check(new_report_sans_element) == False:
                     failures += 1
-            if failures == len(report) - 1:
+            if failures < len(report):
                 safe_count += 1
 
     return safe_count
 
 
 fake = """25 26 29 30 32 35 37 35
-8 7 6 5 3 1"""
+15 16 17 20 22 24 26 26
+80 81 83 85 89
+76 77 79 82 84 87 89 95
+73 75 78 81 83 84 81 84
+9 10 11 12 11 8
+27 28 30 33 35 34 37 37
+67 70 69 72 74 78"""
 
-print(check_for_anomalies(fake))
+print(check_for_anomalies(inputs_day02))
