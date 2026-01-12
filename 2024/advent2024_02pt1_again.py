@@ -69,7 +69,7 @@ def safety_check(report):
             if i == len(report) - 2:
                 return True
             i += 1
-    return True
+    return False
 
 
 def count_unsafe_reports(input_str):
