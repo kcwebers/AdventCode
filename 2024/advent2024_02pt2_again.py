@@ -73,10 +73,13 @@ def check_for_anomalies(input_str):
         else:
             failures = 0
             for i in range(len(report)):
-                new_report_sans_element = [report[x] for x in range(len(report)) if x != i]
-                # print(new_report_sans_element)
-                if safety_check(new_report_sans_element) == False:
+                # list create new list with each element as long as it is not located at the current spot in the list
+                new_report = [report[x] for x in range(len(report)) if x != i]
+                # print(new_report)
+                # check this new list to see if it still fails
+                if safety_check(new_report) == False:
                     failures += 1
+            # if safety check DID NOT fail every time (for the length of the report), then it now passes!
             if failures < len(report):
                 safe_count += 1
 
