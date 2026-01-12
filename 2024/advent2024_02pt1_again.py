@@ -40,7 +40,7 @@
 from variables import inputs_day02
 
 # different approach: have a contained function that determines safe / unsafe and return True or False
-# THEN count the number of False returns
+# THEN count the number of True returns
 
 def safety_check(report):
     # takes in a single list (report) and checks for parameters
@@ -74,7 +74,7 @@ def safety_check(report):
 
 def count_unsafe_reports(input_str):
     # count safe reports 
-    unsafe_count = 0
+    safe_count = 0
     # convert data into usable list
     reports = input_str.split("\n")
 
@@ -83,9 +83,9 @@ def count_unsafe_reports(input_str):
         report = [int(i) for i in r.split(" ")]
         print(report)
         if safety_check(report):
-            unsafe_count += 1
+            safe_count += 1
     
-    return unsafe_count
+    return safe_count
 
 
 print(count_unsafe_reports(inputs_day02))
