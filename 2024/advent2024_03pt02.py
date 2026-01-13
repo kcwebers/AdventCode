@@ -25,6 +25,23 @@ import re
 
 # new parameters == need to enable / disable multiplier based on preceding ido or don't
 
+# !! findall() no longer the best based on the pattern I chose!
+
+# def find_valid_multiples(input_string):
+#     # use regex to locate all occurrences of the pattern specified
+#     # regex will find the standard mul(###,###) OR do() OR don't()
+#     pattern = r"mul\((\d{1,3}),(\d{1,3})\)|do\(\)|don't\(\)"
+#     # switch to track whether or not the functions dp() or dont() have enabled the mul()
+#     enabled = True
+#     valid_multiples = []
+#     # need to loop through and find which function I found (mul(), do(), don't())
+#     for function in re.findall(pattern, input_string):
+#         if function == ("",""):
+#             continue
+#             # is it do or don't?
+#             # doesn't work well with current pattern because I don't hold on to do / don't / mul, just numbers
+#     return valid_multiples
+
 def find_valid_multiples(input_string):
     # use regex to locate all occurrences of the pattern specified
     # regex will find the standard mul(###,###) OR do() OR don't()
