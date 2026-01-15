@@ -80,7 +80,7 @@ def find_xmas(input):
                         if ''.join(matrix[r + l][c + l] for l in range(4)) == "XMAS":
                             total_xmas += 1
             #     # find 'XMAS' vertical backwards (sample == 1)
-                    if c > 3:
+                    if c >= 3:
                         # create a string comprised of the initial "x" found and iterations upwards
                         # print(''.join(matrix[r + l][i + l] for l in range(4)))
                         if ''.join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
@@ -101,7 +101,7 @@ def find_xmas(input):
                         if ''.join(matrix[r + l][c + l] for l in range(4)) == "SAMX":
                             total_xmas += 1
             #     # find 'SAMX' vertical backwards  (sample == 4)
-                    if c > 3:
+                    if c >= 3:
             #             # print(''.join(matrix[r + l][c - l] for l in range(4)))
                         if ''.join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
                             total_xmas += 1
@@ -121,3 +121,4 @@ MAMMMXMMMM
 MXMXAXMASX"""
 
 print(find_xmas(sample))
+print(find_xmas(inputs_day04))
