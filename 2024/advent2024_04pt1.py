@@ -38,6 +38,8 @@
 # .X.X.XMASX
 # Take a look at the little Elf's word search. How many times does XMAS appear?
 
+# assumption: rows are of uniform length, filled only with capital letters
+
 # input is a block of text with consistent line lengths
 # can break information into a matrix? no need to double split, just split once to get uniform rows of strings, then iterate through
 # check up, down, diagonal both forward and back
@@ -46,10 +48,46 @@
 # - x must be at least in 4th spot for backwards, backwards diagonal
 # - x must be at least 4 from end for diagonal forward
 
-def find_xmas(input):
-    matrix = input.split("\n")
+from variables import inputs_day04
 
-    return matrix
+
+def find_xmas(input):
+    # create matrix to run through
+    matrix = input.split("\n")
+    # count for total number of 'xmas'
+    total_xmas = 0
+
+    # loop through and find the 'x' and then continue searching
+    # loop into each row (r) 
+    for r in range(len(matrix)):
+        # loop to check each individual letter based on position in string (i)
+        for i in range(len(matrix[r])):
+            # print(row[i])
+
+            # find 'XMAS' forward
+            if matrix[r][i] == "X":
+                # print(matrix[r][i:(i+4)])
+                if matrix[r][i:(i+4)] == "XMAS":
+                    total_xmas += 1
+            # find 'XMAS' vertically
+                if r < len(matrix) - 4:
+                    if "".join(letter[i] for letter in matrix[r:(r+4)]) == "XMAS":
+                        total_xmas += 1
+                
+            
+            # find 'SAMX' (xmas backwards)
+            if matrix[r][i] == "S":
+                if matrix[r][i:(i+4)] == "SAMX":
+                    total_xmas += 1
+
+            # find 'SAMX' vertically
+                if r < len(matrix) - 4:
+                    if "".join(letter[i] for letter in matrix[r:(r+4)]) == "SAMX":
+                        total_xmas += 1
+
+
+
+    return total_xmas
 
 sample = """MMMSXXMASM
 MSAMXMSMSA
