@@ -60,31 +60,51 @@ def find_xmas(input):
     # loop through and find the 'x' and then continue searching
     # loop into each row (r) 
     for r in range(len(matrix)):
-        # loop to check each individual letter based on position in string (i)
-        for i in range(len(matrix[r])):
-            # print(row[i])
+        # loop to check each individual letter based on position in string (c for column; this is where the row/col meet)
+        for c in range(len(matrix[r])):
+            # print(r[i])
 
-            # find 'XMAS' forward
-            if matrix[r][i] == "X":
+            # find 'XMAS' forward (sample == 3)
+            if matrix[r][c] == "X":
                 # print(matrix[r][i:(i+4)])
-                if matrix[r][i:(i+4)] == "XMAS":
+                if matrix[r][c:(c+4)] == "XMAS":
                     total_xmas += 1
-            # find 'XMAS' vertically
-                if r < len(matrix) - 4:
-                    if "".join(letter[i] for letter in matrix[r:(r+4)]) == "XMAS":
+            # find 'XMAS' vertically (sample == 1)
+                if r < (len(matrix) - 3):
+                    if "".join(letter[c] for letter in matrix[r:(r+4)]) == "XMAS":
                         total_xmas += 1
+            #     # find 'XMAS' vertical forwards (sample == 1)
+                    if c < (len(matrix[r]) - 3): 
+                        # create a string comprised of the initial "x" found and iterations upwards
+                        # print(''.join(matrix[r + l][i + l] for l in range(4)))
+                        if ''.join(matrix[r + l][c + l] for l in range(4)) == "XMAS":
+                            total_xmas += 1
+            #     # find 'XMAS' vertical backwards (sample == 1)
+                    if c > 3:
+                        # create a string comprised of the initial "x" found and iterations upwards
+                        # print(''.join(matrix[r + l][i + l] for l in range(4)))
+                        if ''.join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
+                            total_xmas += 1
                 
             
-            # find 'SAMX' (xmas backwards)
-            if matrix[r][i] == "S":
-                if matrix[r][i:(i+4)] == "SAMX":
+            # # find 'SAMX' (xmas backwards) (sample == 2)
+            if matrix[r][c] == "S":
+                if matrix[r][c:(c+4)] == "SAMX":
                     total_xmas += 1
-
-            # find 'SAMX' vertically
-                if r < len(matrix) - 4:
-                    if "".join(letter[i] for letter in matrix[r:(r+4)]) == "SAMX":
+            # # find 'SAMX' vertically (sample == 2)
+                if r < (len(matrix) - 3):
+                    if "".join(letter[c] for letter in matrix[r:(r+4)]) == "SAMX":
                         total_xmas += 1
-
+            #     # find 'SAMX' vertical forwards (sample == 4)
+                    if c < (len(matrix[r]) - 3):
+                        # print(''.join(matrix[r + l][c + l] for l in range(4)))
+                        if ''.join(matrix[r + l][c + l] for l in range(4)) == "SAMX":
+                            total_xmas += 1
+            #     # find 'SAMX' vertical backwards  (sample == 4)
+                    if c > 3:
+            #             # print(''.join(matrix[r + l][c - l] for l in range(4)))
+                        if ''.join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
+                            total_xmas += 1
 
 
     return total_xmas
