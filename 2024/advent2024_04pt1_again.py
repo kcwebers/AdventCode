@@ -56,7 +56,7 @@ def find_xmas_count(input):
     # count for total number of 'xmas'
     total_xmas = 0
     # strings we are looking for
-    str1, str2 = "XMAS", "SAMX"
+    words = ["XMAS", "SAMX"]
 
     # loop through and find the 'x' and then continue searching
     # loop into each row (r) 
@@ -66,23 +66,23 @@ def find_xmas_count(input):
             # print(r[i])
 
             # find 'XMAS' forward (sample = 3)
-            if matrix[r][c:(c+4)] in (str1, str2):
+            if matrix[r][c:(c+4)] in words:
                 total_xmas += 1
             # find 'XMAS' vertically (sample = 1)
             if r < (len(matrix) - 3):
-                if "".join(letter[c] for letter in matrix[r:(r+4)]) in (str1, str2):
+                if "".join(letter[c] for letter in matrix[r:(r+4)]) in words:
                     total_xmas += 1
                 # find 'XMAS' vertical forwards (sample = 1)
                 if c < (len(matrix[r]) - 3): 
                     # create a string comprised of the initial "x" found and iterations upwards
                     # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + i][c + i] for i in range(4)) in (str1, str2):
+                    if ''.join(matrix[r + i][c + i] for i in range(4)) in words:
                         total_xmas += 1
                 # find 'XMAS' vertical backwards (sample = 1)
                 if c >= 3:
                     # create a string comprised of the initial "x" found and iterations upwards
                     # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + i][c - i] for i in range(4)) in (str1, str2):
+                    if ''.join(matrix[r + i][c - i] for i in range(4)) in words:
                         total_xmas += 1
 
     return total_xmas
