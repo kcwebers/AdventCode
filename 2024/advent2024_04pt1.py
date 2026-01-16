@@ -79,13 +79,13 @@ def find_xmas(input):
                 if c < (len(matrix[r]) - 3): 
                     # create a string comprised of the initial "x" found and iterations upwards
                     # print(".join(matrix[r + l][i + l] for l in range(4)))
-                    if ".join(matrix[r + i][c + i] for i in range(4)) == "XMAS":
+                    if "".join(matrix[r + i][c + i] for i in range(4)) == "XMAS":
                         total_xmas += 1
             # find "XMAS" vertical backwards (sample == 1)
                 if c >= 3:
                     # create a string comprised of the initial "x" found and iterations upwards
-                    # print(".join(matrix[r + l][i + l] for l in range(4)))
-                    if ".join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
+                    # print("".join(matrix[r + l][i + l] for l in range(4)))
+                    if "".join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
                         total_xmas += 1
             # =========================================== return True or False, then count
                 
@@ -100,13 +100,13 @@ def find_xmas(input):
                     total_xmas += 1
                 # find "SAMX" vertical forwards (sample == 4)
                 if c < (len(matrix[r]) - 3):
-                    # print(".join(matrix[r + l][c + l] for l in range(4)))
-                    if ".join(matrix[r + i][c + i] for i in range(4)) == "SAMX":
+                    # print("".join(matrix[r + l][c + l] for l in range(4)))
+                    if "".join(matrix[r + i][c + i] for i in range(4)) == "SAMX":
                         total_xmas += 1
                 # find "SAMX" vertical backwards  (sample == 4)
                 if c >= 3:
-                    # print(".join(matrix[r + l][c - l] for l in range(4)))
-                    if ".join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
+                    # print("".join(matrix[r + l][c - l] for l in range(4)))
+                    if "".join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
                         total_xmas += 1
 
 
