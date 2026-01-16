@@ -53,36 +53,36 @@ from variables import inputs_day04
 def find_xmas_count(input):
     # create matrix to run through
     matrix = input.split("\n")
-    # count for total number of 'xmas'
+    # count for total number of "xmas"
     total_xmas = 0
     # strings we are looking for
     words = ["XMAS", "SAMX"]
 
-    # loop through and find the 'x' and then continue searching
+    # loop through and find the "x" and then continue searching
     # loop into each row (r) 
     for r in range(len(matrix)):
         # loop to check each individual letter based on position in string (c for column; this is where the row/col meet)
         for c in range(len(matrix[r])):
             # print(r[i])
 
-            # find 'XMAS' forward (sample = 3)
+            # find "XMAS" forward (sample = 3)
             if matrix[r][c:(c+4)] in words:
                 total_xmas += 1
-            # find 'XMAS' vertically (sample = 1)
+            # find "XMAS" vertically (sample = 1)
             if r < (len(matrix) - 3):
                 if "".join(letter[c] for letter in matrix[r:(r+4)]) in words:
                     total_xmas += 1
-                # find 'XMAS' vertical forwards (sample = 1)
+                # find "XMAS" vertical forwards (sample = 1)
                 if c < (len(matrix[r]) - 3): 
                     # create a string comprised of the initial "x" found and iterations upwards
-                    # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + i][c + i] for i in range(4)) in words:
+                    # print("".join(matrix[r + l][i + l] for l in range(4)))
+                    if "".join(matrix[r + i][c + i] for i in range(4)) in words:
                         total_xmas += 1
-                # find 'XMAS' vertical backwards (sample = 1)
+                # find "XMAS" vertical backwards (sample = 1)
                 if c >= 3:
                     # create a string comprised of the initial "x" found and iterations upwards
-                    # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + i][c - i] for i in range(4)) in words:
+                    # print("".join(matrix[r + l][i + l] for l in range(4)))
+                    if "".join(matrix[r + i][c - i] for i in range(4)) in words:
                         total_xmas += 1
 
     return total_xmas

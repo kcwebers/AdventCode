@@ -54,59 +54,59 @@ from variables import inputs_day04
 def find_xmas(input):
     # create matrix to run through
     matrix = input.split("\n")
-    # count for total number of 'xmas'
+    # count for total number of "xmas"
     total_xmas = 0
 
-    # loop through and find the 'x' and then continue searching
+    # loop through and find the "x" and then continue searching
     # loop into each row (r) 
     for r in range(len(matrix)):
         # loop to check each individual letter based on position in string (c for column; this is where the row/col meet)
         for c in range(len(matrix[r])):
             # print(r[i])
 
-            # # find 'XMAS' forward (sample == 3)
+            # # find "XMAS" forward (sample == 3)
             # if matrix[r][c] == "X":
             #     # print(matrix[r][i:(i+4)])
 
             # =========================================== Can be separate function!
             if matrix[r][c:(c+4)] == "XMAS":
                 total_xmas += 1
-        # find 'XMAS' vertically (sample == 1)
+        # find "XMAS" vertically (sample == 1)
             if r < (len(matrix) - 3):
                 if "".join(letter[c] for letter in matrix[r:(r+4)]) == "XMAS":
                     total_xmas += 1
-            # find 'XMAS' vertical forwards (sample == 1)
+            # find "XMAS" vertical forwards (sample == 1)
                 if c < (len(matrix[r]) - 3): 
                     # create a string comprised of the initial "x" found and iterations upwards
-                    # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + l][c + l] for l in range(4)) == "XMAS":
+                    # print(".join(matrix[r + l][i + l] for l in range(4)))
+                    if ".join(matrix[r + i][c + i] for i in range(4)) == "XMAS":
                         total_xmas += 1
-            # find 'XMAS' vertical backwards (sample == 1)
+            # find "XMAS" vertical backwards (sample == 1)
                 if c >= 3:
                     # create a string comprised of the initial "x" found and iterations upwards
-                    # print(''.join(matrix[r + l][i + l] for l in range(4)))
-                    if ''.join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
+                    # print(".join(matrix[r + l][i + l] for l in range(4)))
+                    if ".join(matrix[r + i][c - i] for i in range(4)) == "XMAS":
                         total_xmas += 1
             # =========================================== return True or False, then count
                 
             
-            # find 'SAMX' (xmas backwards) (sample == 2)
+            # find "SAMX" (xmas backwards) (sample == 2)
             # if matrix[r][c] == "S":
             if matrix[r][c:(c+4)] == "SAMX":
                 total_xmas += 1
-            # find 'SAMX' vertically (sample == 2)
+            # find "SAMX" vertically (sample == 2)
             if r < (len(matrix) - 3):
                 if "".join(letter[c] for letter in matrix[r:(r+4)]) == "SAMX":
                     total_xmas += 1
-                # find 'SAMX' vertical forwards (sample == 4)
+                # find "SAMX" vertical forwards (sample == 4)
                 if c < (len(matrix[r]) - 3):
-                    # print(''.join(matrix[r + l][c + l] for l in range(4)))
-                    if ''.join(matrix[r + l][c + l] for l in range(4)) == "SAMX":
+                    # print(".join(matrix[r + l][c + l] for l in range(4)))
+                    if ".join(matrix[r + i][c + i] for i in range(4)) == "SAMX":
                         total_xmas += 1
-                # find 'SAMX' vertical backwards  (sample == 4)
+                # find "SAMX" vertical backwards  (sample == 4)
                 if c >= 3:
-                    # print(''.join(matrix[r + l][c - l] for l in range(4)))
-                    if ''.join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
+                    # print(".join(matrix[r + l][c - l] for l in range(4)))
+                    if ".join(matrix[r + i][c - i] for i in range(4)) == "SAMX":
                         total_xmas += 1
 
 
