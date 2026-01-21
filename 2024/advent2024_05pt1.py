@@ -158,7 +158,7 @@ def check_validity_and_return_mid(rules, update_log):
 # assumptions = all given page numbers exist in rules
 
 
-def find_valid_updates(input):
+def find_total_for_valid_updates(input):
     rules, updates = convert_input(input)
     # print(rules)
     # print(updates)
@@ -201,5 +201,5 @@ sample_input = """47|53
 61,13,29
 97,13,75,29,47"""
 
-print(find_valid_updates(sample_input))
-# find_valid_updates(inputs_day05)
+# print(find_total_for_valid_updates(sample_input))
+print(find_total_for_valid_updates(inputs_day05))
