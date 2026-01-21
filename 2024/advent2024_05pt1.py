@@ -130,7 +130,7 @@ def check_validity_and_return_mid(rules, update_log):
             print("valid")
             print(update_log)
             print("adding..." + str(update_log[int((len(update_log) - 1)/2)]))
-            return update_log[int((len(update_log)+1)/2)]
+            return update_log[int((len(update_log) - 1)/2)]
         # if a number appears and does not exist in the keys, but isn't final number, then invalid update
         elif update_log[current_check] not in rules.keys() and current_check != len(update_log) - 1:
             return 0
@@ -151,7 +151,7 @@ def check_validity_and_return_mid(rules, update_log):
 
     print("valid")
     print(update_log)
-    print("adding..." + str(update_log[int((len(update_log)+1)/2)]))
+    print("adding..." + str(update_log[int((len(update_log) - 1)/2)]))
     return update_log[int((len(update_log) - 1)/2)]
 # if this check returns true, then return the middle number?
 # assumptions = all lists have a middle number
