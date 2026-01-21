@@ -121,30 +121,38 @@ def convert_input(input):
     changes = [list(map(int, line.split(","))) for line in readable[1].split("\n")]
     return page_rules, changes
 
-
 def check_validity_and_return_mid(rules, update_log):
     current_check = 0
     already_checked = []
     while current_check < len(update_log):
+        # if we are looking at final number in the update sequence, they CAN appear only in value lists
+        if update_log[current_check] not in rules.keys() and current_check == len(update_log) - 1:
+            print("valid")
+            print(update_log)
+            print("adding..." + str(update_log[int((len(update_log) - 1)/2)]))
+            return update_log[int((len(update_log)+1)/2)]
+        # if a number appears and does not exist in the keys, but isn't final number, then invalid update
+        elif update_log[current_check] not in rules.keys() and current_check != len(update_log) - 1:
+            return 0
+        
+
         for c in range(current_check + 1, len(update_log)):
             if update_log[c] not in rules[update_log[current_check]]:
                 # appears in the list of # following the current check
                 # if the number is not in the list, then not a valid update
                 # return 0 so nothing is added for final sum
-                print("not okay...")
                 return 0
             elif any(item in already_checked for item in rules[update_log[current_check]]):
                 # if an already checked page is found in the list of a following checked page, then the ordering rule is broken
                 return 0
-            else:
-                # if number does appear then continue with next iterations
-                print("number does appear correctly")
 
-        current_check += 1
         already_checked.append(update_log[current_check])
+        current_check += 1
 
-    
-    return update_log[len(update_log/2)]
+    print("valid")
+    print(update_log)
+    print("adding..." + str(update_log[int((len(update_log)+1)/2)]))
+    return update_log[int((len(update_log) - 1)/2)]
 # if this check returns true, then return the middle number?
 # assumptions = all lists have a middle number
 # assumptions = all given page numbers exist in rules
@@ -152,9 +160,8 @@ def check_validity_and_return_mid(rules, update_log):
 
 def find_valid_updates(input):
     rules, updates = convert_input(input)
-    print(rules)
-    print(updates)
-
+    # print(rules)
+    # print(updates)
     total = 0
 
     #loop through to access each update log
@@ -194,5 +201,5 @@ sample_input = """47|53
 61,13,29
 97,13,75,29,47"""
 
-find_valid_updates(sample_input)
+print(find_valid_updates(sample_input))
 # find_valid_updates(inputs_day05)
