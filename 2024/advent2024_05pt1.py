@@ -125,8 +125,11 @@ def convert_input(input):
 def check_validity_and_return_mid(rules, change_log):
     current_check = 0
     while current_check < len(change_log):
-        for change in change_log:
-            if 
+        for c in change_log:
+            if c in rules[change_log[current_check]]:
+                print("okay...")
+
+    
     return change_log[len(change_log/2)]
 # if this check returns true, then return the middle number?
 # assumptions = all lists have a middle number
